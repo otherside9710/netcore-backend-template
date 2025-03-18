@@ -17,16 +17,19 @@ Made with ❤️ by Otherside
 ## Project Structure
 
 ```
-├── API                     # Web API layer
-│   ├── Controllers        # API endpoints
-│   └── Program.cs        # Application configuration
-├── Application            # Application layer
-│   └── Use_Cases         # Business logic use cases
-├── Domain                 # Domain layer
-│   ├── Contracts         # Interfaces/contracts
-│   └── Entities          # Domain entities
-└── Infrastructure        # Infrastructure layer
-    └── Persistence       # Database implementations
+├── src                    # Source code
+│   ├── API               # Web API layer
+│   │   ├── Controllers   # API endpoints
+│   │   └── Program.cs    # Application configuration
+│   ├── Application       # Application layer
+│   │   └── Use_Cases     # Business logic use cases
+│   ├── Domain            # Domain layer
+│   │   ├── Contracts     # Interfaces/contracts
+│   │   └── Entities      # Domain entities
+│   └── Infrastructure    # Infrastructure layer
+│       ├── Services      # Application services
+│       └── Persistence   # Database implementations
+└── tests                 # Test projects (to be added)
 ```
 
 ## Prerequisites
@@ -77,10 +80,10 @@ The application uses the following configuration in `appsettings.json`:
 ## Development
 
 1. Clone the repository
-2. Update MongoDB connection string in `API/appsettings.json`
+2. Update MongoDB connection string in `src/API/appsettings.json`
 3. Run the project:
    ```bash
-   dotnet run --project API/API.csproj
+   dotnet run --project src/API/API.csproj
    ```
 4. Access Swagger documentation at: `http://localhost:5276/swagger`
 
@@ -99,6 +102,7 @@ This template follows Clean Architecture principles:
 3. **Infrastructure Layer**: Contains implementations
    - Depends on Domain layer
    - Implements interfaces defined in Domain
+   - Contains services that orchestrate use cases
 
 4. **API Layer**: Entry point of the application
    - Depends on all other layers
